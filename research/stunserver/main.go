@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/pixelbender/go-stun/stun"
+	"github.com/osrtss/stungo"
 	"github.com/jessevdk/go-flags"
 )
 
