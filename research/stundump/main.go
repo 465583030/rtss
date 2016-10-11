@@ -95,7 +95,7 @@ func main() {
 		panic(err)
 	}
 
-	log.Printf(">> Starting udpdump, listening at %v:%v...", opts.Host, opts.Port)
+	log.Printf(">> Starting stundump, listening at %v:%v...", opts.Host, opts.Port)
 
 	for {
 		handleClient(l)
