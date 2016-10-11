@@ -48,7 +48,7 @@ func handleClient(conn *net.UDPConn) {
 		log.Printf("Read from UDP failed, err: %v", err)
 		return
 	}
-	log.Printf("Read from client(%v:%v), len: %v, [%v]", addr.IP, addr.Port, n, string(b[:n]))
+	log.Printf("Read from client(%v:%v), len: %v", addr.IP, addr.Port, n)
 
 	stunHeader := &STUNHeader{}
 	buffer := bytes.NewBuffer(b)
