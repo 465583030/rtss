@@ -58,7 +58,7 @@ func handleClient(conn *net.UDPConn) {
 	stunHeader.MsgLen = binary.BigEndian.Uint16(ml)
 	mc := buffer.Next(4)
 	stunHeader.MsgCookie = binary.BigEndian.Uint32(mc)
-	stunHeader.MsgTransID = buffer.Next(12)
+	copy(stunHeader.MsgTransID[:], buffer.Next(12))
 
 	log.Printf("STUNHeader: MsgType: %x, MsgLen: %d, MsgCookie: %x, MsgTransID: %v", stunHeader.MsgType, stunHeader.MsgLen, stunHeader.MsgCookie, stunHeader.MsgTransID)
 
