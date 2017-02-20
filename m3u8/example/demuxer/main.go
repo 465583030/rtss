@@ -14,7 +14,7 @@ func main() {
 	if GOPATH == "" {
 		panic("$GOPATH is empty")
 	}
-	m3u8File := "github.com/osrtss/rtss/m3u8/example/media-playlist-with-byterange.m3u8"
+	m3u8File := "github.com/osrtss/rtss/m3u8/example/playlist/media-playlist-with-byterange.m3u8"
 	f, err := os.Open(path.Join(GOPATH, "src", m3u8File))
 	if err != nil {
 		panic(err)

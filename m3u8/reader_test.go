@@ -11,7 +11,7 @@ import (
 )
 
 func TestDecodeMasterPlaylist(t *testing.T) {
-	f, err := os.Open("example/master.m3u8")
+	f, err := os.Open("example/playlist/master.m3u8")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -32,7 +32,7 @@ func TestDecodeMasterPlaylist(t *testing.T) {
 }
 
 func TestDecodeMasterPlaylistWithMultipleCodecs(t *testing.T) {
-	f, err := os.Open("example/master-with-multiple-codecs.m3u8")
+	f, err := os.Open("example/playlist/master-with-multiple-codecs.m3u8")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -58,7 +58,7 @@ func TestDecodeMasterPlaylistWithMultipleCodecs(t *testing.T) {
 }
 
 func TestDecodeMasterPlaylistWithAlternatives(t *testing.T) {
-	f, err := os.Open("example/master-with-alternatives.m3u8")
+	f, err := os.Open("example/playlist/master-with-alternatives.m3u8")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -94,7 +94,7 @@ func TestDecodeMasterPlaylistWithAlternatives(t *testing.T) {
 
 // Decode a master playlist with Name tag in EXT-X-STREAM-INF
 func TestDecodeMasterPlaylistWithStreamInfName(t *testing.T) {
-	f, err := os.Open("example/master-with-stream-inf-name.m3u8")
+	f, err := os.Open("example/playlist/master-with-stream-inf-name.m3u8")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -111,7 +111,7 @@ func TestDecodeMasterPlaylistWithStreamInfName(t *testing.T) {
 }
 
 func TestDecodeMediaPlaylistByteRange(t *testing.T) {
-	f, _ := os.Open("example/media-playlist-with-byterange.m3u8")
+	f, _ := os.Open("example/playlist/media-playlist-with-byterange.m3u8")
 	p, _ := m3u8.NewMediaPlaylist(3, 3)
 	_ = p.DecodeFrom(bufio.NewReader(f), true)
 	expected := []*m3u8.MediaSegment{
@@ -128,7 +128,7 @@ func TestDecodeMediaPlaylistByteRange(t *testing.T) {
 
 // Decode a master playlist with i-frame-stream-inf
 func TestDecodeMasterPlaylistWithIFrameStreamInf(t *testing.T) {
-	f, err := os.Open("example/master-with-i-frame-stream-inf.m3u8")
+	f, err := os.Open("example/playlist/master-with-i-frame-stream-inf.m3u8")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -155,7 +155,7 @@ func TestDecodeMasterPlaylistWithIFrameStreamInf(t *testing.T) {
 }
 
 func TestDecodeMediaPlaylist(t *testing.T) {
-	f, err := os.Open("example/wowza-vod-chunklist.m3u8")
+	f, err := os.Open("example/playlist/wowza-vod-chunklist.m3u8")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -192,7 +192,7 @@ func TestDecodeMediaPlaylist(t *testing.T) {
 }
 
 func TestDecodeMediaPlaylistWithWidevine(t *testing.T) {
-	f, err := os.Open("example/widevine-bitrate.m3u8")
+	f, err := os.Open("example/playlist/widevine-bitrate.m3u8")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -218,7 +218,7 @@ func TestDecodeMediaPlaylistWithWidevine(t *testing.T) {
 }
 
 func TestDecodeMasterPlaylistWithAutodetection(t *testing.T) {
-	f, err := os.Open("example/master.m3u8")
+	f, err := os.Open("example/playlist/master.m3u8")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -239,7 +239,7 @@ func TestDecodeMasterPlaylistWithAutodetection(t *testing.T) {
 }
 
 func TestDecodeMediaPlaylistWithAutodetection(t *testing.T) {
-	f, err := os.Open("example/wowza-vod-chunklist.m3u8")
+	f, err := os.Open("example/playlist/wowza-vod-chunklist.m3u8")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -270,7 +270,7 @@ func TestDecodeMediaPlaylistWithAutodetection(t *testing.T) {
 // TestDecodeMediaPlaylistAutoDetectExtend tests a very large playlist auto
 // extends to the appropriate size.
 func TestDecodeMediaPlaylistAutoDetectExtend(t *testing.T) {
-	f, err := os.Open("example/media-playlist-large.m3u8")
+	f, err := os.Open("example/playlist/media-playlist-large.m3u8")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -296,7 +296,7 @@ func TestDecodeMediaPlaylistAutoDetectExtend(t *testing.T) {
 // Example of parsing a playlist with EXT-X-DISCONTINIUTY tag
 // and output it with integer segment durations.
 func ExampleMediaPlaylist_DurationAsInt() {
-	f, _ := os.Open("example/media-playlist-with-discontinuity.m3u8")
+	f, _ := os.Open("example/playlist/media-playlist-with-discontinuity.m3u8")
 	p, _, _ := m3u8.DecodeFrom(bufio.NewReader(f), true)
 	pp := p.(*m3u8.MediaPlaylist)
 	pp.DurationAsInt(true)
@@ -326,14 +326,14 @@ func TestMediaPlaylistWithSCTE35Tag(t *testing.T) {
 		expectedSCTETime  float64
 	}{
 		{
-			"example/media-playlist-with-scte35.m3u8",
+			"example/playlist/media-playlist-with-scte35.m3u8",
 			2,
 			"/DAIAAAAAAAAAAAQAAZ/I0VniQAQAgBDVUVJQAAAAH+cAAAAAA==",
 			"123",
 			123.12,
 		},
 		{
-			"example/media-playlist-with-scte35-1.m3u8",
+			"example/playlist/media-playlist-with-scte35-1.m3u8",
 			1,
 			"/DAIAAAAAAAAAAAQAAZ/I0VniQAQAgBDVUVJQAA",
 			"",
@@ -371,7 +371,7 @@ func TestMediaPlaylistWithSCTE35Tag(t *testing.T) {
 
 func BenchmarkDecodeMasterPlaylist(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		f, err := os.Open("example/master.m3u8")
+		f, err := os.Open("example/playlist/master.m3u8")
 		if err != nil {
 			b.Fatal(err)
 		}
@@ -384,7 +384,7 @@ func BenchmarkDecodeMasterPlaylist(b *testing.B) {
 
 func BenchmarkDecodeMediaPlaylist(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		f, err := os.Open("example/media-playlist-large.m3u8")
+		f, err := os.Open("example/playlist/media-playlist-large.m3u8")
 		if err != nil {
 			b.Fatal(err)
 		}

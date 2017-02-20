@@ -423,7 +423,7 @@ func TestClosedMediaPlaylist(t *testing.T) {
 // Create new media playlist as sliding playlist.
 func TestLargeMediaPlaylistWithParallel(t *testing.T) {
 	testCount := 10
-	expect, err := ioutil.ReadFile("example/media-playlist-large.m3u8")
+	expect, err := ioutil.ReadFile("example/playlist/media-playlist-large.m3u8")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -432,7 +432,7 @@ func TestLargeMediaPlaylistWithParallel(t *testing.T) {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
-			f, err := os.Open("example/media-playlist-large.m3u8")
+			f, err := os.Open("example/playlist/media-playlist-large.m3u8")
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -730,7 +730,7 @@ func ExampleMasterPlaylist_String() {
  ****************/
 
 func BenchmarkEncodeMasterPlaylist(b *testing.B) {
-	f, err := os.Open("example/master.m3u8")
+	f, err := os.Open("example/playlist/master.m3u8")
 	if err != nil {
 		b.Fatal(err)
 	}
@@ -745,7 +745,7 @@ func BenchmarkEncodeMasterPlaylist(b *testing.B) {
 }
 
 func BenchmarkEncodeMediaPlaylist(b *testing.B) {
-	f, err := os.Open("example/media-playlist-large.m3u8")
+	f, err := os.Open("example/playlist/media-playlist-large.m3u8")
 	if err != nil {
 		b.Fatal(err)
 	}
