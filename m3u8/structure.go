@@ -6,32 +6,20 @@ import (
 	"time"
 )
 
-// This file defines data structures related to package.
+// This file defines the data structures related to the package.
 
 const (
-	/*
-		Compatibility rules described in section 7:
-		Clients and servers MUST implement protocol version 2 or higher to use:
-		   o  The IV attribute of the EXT-X-KEY tag.
-		   Clients and servers MUST implement protocol version 3 or higher to use:
-		   o  Floating-point EXTINF duration values.
-		   Clients and servers MUST implement protocol version 4 or higher to use:
-		   o  The EXT-X-BYTERANGE tag.
-		   o  The EXT-X-I-FRAME-STREAM-INF tag.
-		   o  The EXT-X-I-FRAMES-ONLY tag.
-		   o  The EXT-X-MEDIA tag.
-		   o  The AUDIO and VIDEO attributes of the EXT-X-STREAM-INF tag.
-	*/
+	// refs: Protocol version compatibility in section 7
 	minver = uint8(3)
 	// DATETIME time format
-	DATETIME = time.RFC3339Nano // Format for EXT-X-PROGRAM-DATE-TIME defined in section 3.4.5
+	DATETIME = time.RFC3339Nano // Format for EXT-X-PROGRAM-DATE-TIME
 )
 
 // ListType list type
 type ListType uint
 
 const (
-	// use 0 for not defined type
+	// use 0 for undefined types
 
 	// MASTER type
 	MASTER ListType = iota + 1
@@ -43,7 +31,7 @@ const (
 type MediaType uint
 
 const (
-	// use 0 for not defined type
+	// use 0 for undefined types
 
 	// EVENT type
 	EVENT MediaType = iota + 1
@@ -97,7 +85,6 @@ type MediaPlaylist struct {
 	Iframe        bool // EXT-X-I-FRAMES-ONLY
 	Closed        bool // is this VOD (closed) or Live (sliding) playlist?
 	durationAsInt bool // output durations as integers of floats?
-
 }
 
 // MasterPlaylist This structure represents a master playlist which combines media playlists for multiple bitrates.
