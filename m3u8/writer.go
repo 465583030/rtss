@@ -186,6 +186,19 @@ func (p *MasterPlaylist) Encode() *bytes.Buffer {
 				p.buf.WriteString(pl.Video)
 				p.buf.WriteRune('"')
 			}
+			if pl.Captions != "" {
+				p.buf.WriteString(",CLOSED-CAPTIONS=")
+				if pl.Captions == "NONE" {
+					p.buf.WriteString(pl.Captions) // CC should not be quoted when eq NONE
+				} else {
+					p.buf.WriteRune('"')
+					p.buf.WriteString(pl.Captions)
+					p.buf.WriteRune('"')
+				}
+				p.buf.WriteString(",CLOSED-CAPTIONS=\"")
+				p.buf.WriteString(pl.Captions)
+				p.buf.WriteRune('"')
+			}
 			if pl.Subtitles != "" {
 				p.buf.WriteString(",SUBTITLES=\"")
 				p.buf.WriteString(pl.Subtitles)
