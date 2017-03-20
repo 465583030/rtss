@@ -40,7 +40,7 @@ const (
 )
 
 // MediaPlaylist This structure represents a single bitrate playlist aka media playlist.
-// It related to both a simple media playlists and a sliding window media playlists.
+// It is related to both a simple media playlist and a sliding window media playlist.
 // URI lines in the Playlist point to media segments.
 //
 // Simple Media Playlist file sample:
@@ -74,17 +74,16 @@ type MediaPlaylist struct {
 	WV             *WV    // Widevine related tags outside of M3U8 specs
 	Args           string // optional arguments placed after URIs (URI?Args)
 	TargetDuration float64
-	//keyformat      int
-	Winsize       uint   // max number of segments displayed in an encoded playlist; need set to zero for VOD playlists
-	capacity      uint   // total capacity of slice used for the playlist
-	head          uint   // head of FIFO, we add segments to head
-	tail          uint   // tail of FIFO, we remove segments from tail
-	count         uint   // number of segments added to the playlist
-	SeqNo         uint64 // EXT-X-MEDIA-SEQUENCE
-	Ver           uint8
-	Iframe        bool // EXT-X-I-FRAMES-ONLY
-	Closed        bool // is this VOD (closed) or Live (sliding) playlist?
-	durationAsInt bool // output durations as integers of floats?
+	Winsize        uint   // max number of segments displayed in an encoded playlist; need set to zero for VOD playlists
+	capacity       uint   // total capacity of slice used for the playlist
+	head           uint   // head of FIFO, we add segments to head
+	tail           uint   // tail of FIFO, we remove segments from tail
+	count          uint   // number of segments added to the playlist
+	SeqNo          uint64 // EXT-X-MEDIA-SEQUENCE
+	Ver            uint8
+	Iframe         bool // EXT-X-I-FRAMES-ONLY
+	Closed         bool // is this VOD (closed) or Live (sliding) playlist?
+	durationAsInt  bool // output durations as integers of floats?
 }
 
 // MasterPlaylist This structure represents a master playlist which combines media playlists for multiple bitrates.
