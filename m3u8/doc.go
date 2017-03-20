@@ -1,4 +1,4 @@
-// Package m3u8 is mux & demux library for Apple HLS.
+// Package m3u8 is a mux & demux library for Apple HLS.
 // This package is a simple text formating and parsing library, so it must be simple too.
 // It did not offer ways to play HLS or handle playlists over HTTP. Library features are:
 
