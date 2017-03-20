@@ -7,8 +7,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/osrtss/stungo"
 	"github.com/jessevdk/go-flags"
+	"github.com/osrtss/icego/stun"
 )
 
 var opts struct {
