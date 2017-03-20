@@ -93,7 +93,7 @@ func TestDecodeMasterPlaylistWithAlternatives(t *testing.T) {
 }
 
 func TestDecodeMasterPlaylistWithClosedCaptionEqNone(t *testing.T) {
-	f, err := os.Open("sample-playlists/master-with-closed-captions-eq-none.m3u8")
+	f, err := os.Open("example/playlist/master-with-closed-captions-eq-none.m3u8")
 	if err != nil {
 		t.Fatal(err)
 	}
