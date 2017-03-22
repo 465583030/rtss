@@ -24,3 +24,4 @@ _testmain.go
 *.prof
 /research/stundump/stundump
 /research/stunserver/stunserver
+/m3u8/example/hlsdownloader/hlsdownloader
