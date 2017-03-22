@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-// This file defines functions related to playlist muxing.
+// This file defines functions related to playlist parsing.
 
 var reKeyValue = regexp.MustCompile(`([a-zA-Z_-]+)=("[^"]+"|[^",]+)`)
 
